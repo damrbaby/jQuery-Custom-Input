@@ -4,7 +4,7 @@
  * jQuery customInput plugin
  * Author: Maggie Costello Wachs maggie@filamentgroup.com, Scott Jehl, scott@filamentgroup.com
  * Updates: George Walters II walterg2@gmail.com
- * Copyright (c) 2009 Filament Group 
+ * Copyright (c) 2009 Filament Group
  * licensed under MIT (filamentgroup.com/examples/mit-license.txt)
  * --------------------------------------------------------------------
  */
@@ -19,7 +19,7 @@ jQuery.fn.customInput = function () {
 			// add in an empty span tag to contain the sprite image
 			label.prepend("<span></span>");
 
-			// wrap the input + label in a div 
+			// wrap the input + label in a div
 			input.add(label).wrapAll('<div class="custom-' + input.attr('type') + '"></div>');
 
 			// necessary for browsers that don't support the :hover pseudo class on labels
@@ -28,7 +28,7 @@ jQuery.fn.customInput = function () {
 				function () { $(this).removeClass('hover'); }
 			);
 
-			//bind custom event, trigger it, bind click,focus,blur events					
+			//bind custom event, trigger it, bind click,focus,blur events
 			input.bind('updateState', function () {
 				if (input.is(':checked')) {
 					label.addClass('checked');
@@ -37,7 +37,7 @@ jQuery.fn.customInput = function () {
 				}
 			})
 				.trigger('updateState')
-				.click(function () { $('input[name="' + $(this).attr('name') + '"]').trigger('updateState'); })
+				.change(function () { $('input[name="' + $(this).attr('name') + '"]').trigger('updateState'); })
 				.focus(function () { label.addClass('focus'); })
 				.blur(function () { label.removeClass('focus'); });
 		}
